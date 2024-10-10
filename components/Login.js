@@ -4,7 +4,7 @@ import { Button, Modal } from 'antd';
 import { useEffect, useState } from 'react';
 import SignUp from './modal/SignUp';
 import SignIn from './modal/SignIn';
-
+// import  { useHistory } from 'react-router-dom'
 
 function Login() {
 
@@ -15,7 +15,12 @@ function Login() {
 
     const [isLogin, isLoginSetter] = useState(false)
     // const [clickSignUpBool, clickSignUpBoolSetter] = useState(false);
-    const [clickSignUpBool, clickSignUpBoolSetter] = useState(false);
+    const [declencerFetchSignUpBool, declencerFetchSignUpBoolSetter] = useState(false);
+    const [declencerFetchSignInBool, declencerFetchSignInBoolSetter] = useState(false);
+    
+    // redirect url
+    // let history = useHistory()
+
 
     // Pour le modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,17 +37,24 @@ function Login() {
         isLoginSetter(isLogin)
         showModal()
     }
-    const changeClickSignUpBool = (firstName, username, password) =>{
-        console.log(`- dans Login.js 📣: changeClickSignUpBool`)
+    const changeDeclencerFetchSignUpBool = (firstName, username, password) =>{
+        console.log(`- dans Login.js 📣: declencerFetchSignUpBool`)
         firstNameSetter(firstName)
         usernameSetter(username)
         passwordSetter(password)
-        clickSignUpBoolSetter(!clickSignUpBool)
+        declencerFetchSignUpBoolSetter(!declencerFetchSignUpBool)
+    }
+    const changeDeclencerFetchSignInBool = (username, password) =>{
+        console.log(`- dans Login.js 📣: declencerFetchSignInBool`)
+        usernameSetter(username)
+        passwordSetter(password)
+        declencerFetchSignInBoolSetter(!declencerFetchSignInBool)
     }
 
 
     useEffect(() => {
-        if (clickSignUpBool) {
+        if (declencerFetchSignUpBool) {
+            console.log("***** SignUp ******")
             const bodyData = {
                 firstName: firstName,
                 username: username,
@@ -53,20 +65,44 @@ function Login() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(bodyData)
-            })
+                })
                 .then(response => response.json())
                 .then(data => {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     handleCancel()
+                    // return <Redirect to='/home'  />
+                    // history.push("/home");
                 });
-        } 
+        } else if (declencerFetchSignInBool){
+            console.log(`---> declencerFetchSignInBool 🎯`)
+            console.log("------- SignIN -------")
+            const bodyData = {
+                username: username,
+                password: password,
+            }
+            fetch('http://localhost:3000/users/signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bodyData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(`reponse bien reçu 🎉`)
+                    console.log(`data: ${data.result}`)
+                    handleCancel()
+                    // return <Redirect to='/home'  />
+                    // history.push("/home");
+                });
+        }
 
-    }, [clickSignUpBool]);
+    }, [declencerFetchSignUpBool, declencerFetchSignInBool]);
 
     const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
         footer={<></>} >
-        {isLogin ? <SignIn/> : <SignUp changeClickSignUpBool={changeClickSignUpBool}/> }
+
+        {isLogin ? <SignIn changeDeclencerFetchSignInBool={changeDeclencerFetchSignInBool}/> : 
+        <SignUp changeDeclencerFetchSignUpBool={changeDeclencerFetchSignUpBool}/> }
     </Modal>
 
     return (
