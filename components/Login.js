@@ -4,7 +4,7 @@ import { Button, Modal } from 'antd';
 import { useEffect, useState } from 'react';
 import SignUp from './modal/SignUp';
 import SignIn from './modal/SignIn';
-// import  { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router';
 
 function Login() {
 
@@ -19,7 +19,7 @@ function Login() {
     const [declencerFetchSignInBool, declencerFetchSignInBoolSetter] = useState(false);
     
     // redirect url
-    // let history = useHistory()
+    const router = useRouter();
 
 
     // Pour le modal
@@ -71,8 +71,8 @@ function Login() {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     handleCancel()
-                    // return <Redirect to='/home'  />
-                    // history.push("/home");
+
+                    router.push('/home');
                 });
         } else if (declencerFetchSignInBool){
             console.log(`---> declencerFetchSignInBool 🎯`)
@@ -91,8 +91,8 @@ function Login() {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     handleCancel()
-                    // return <Redirect to='/home'  />
-                    // history.push("/home");
+
+                    router.push('/home');
                 });
         }
 
