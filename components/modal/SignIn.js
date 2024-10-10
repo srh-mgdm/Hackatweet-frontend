@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/SignUp.module.css';
 import Image from 'next/image';
 
-function SignIn() {
+function SignIn(props) {
 
     const [username, usernameSetter] = useState('');
     const [password, passwordSetter] = useState('');
 
     const clickSignUp = () => {
         console.log(`-on a cliqué 📢: clickSignIn`)
+        props.changeDeclencerFetchSignInBool(username,password)
     }
 
     return (

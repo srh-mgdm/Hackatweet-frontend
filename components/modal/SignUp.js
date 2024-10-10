@@ -12,11 +12,12 @@ function SignUp(props) {
     const clickSignUp = () => {
         console.log(`-on a cliqué 📢: clickSignUp`)
         // showModal()
-        console.log(`firstName: ${firstName}`)
-        console.log(`username: ${username}`)
-        console.log(`password: ${password}`)
+        // console.log(`firstName: ${firstName}`)
+        // console.log(`username: ${username}`)
+        // console.log(`password: ${password}`)
         // clickSignUpBoolSetter(true)
-        props.changeClickSignUpBool(firstName, username,password)
+        // props.changeClickSignUpBool(firstName, username,password)
+        props.changeDeclencerFetchSignUpBool(firstName, username,password)
     }
 
 
