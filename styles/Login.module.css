@@ -35,3 +35,12 @@ height: 300px;
 .btnLogin{
     width: 100px;
 }
+
+
+.mainSignUpModal{
+    display: flex;
+    flex-wrap: wrap;
+}
+.divModalInput{
+    width:100%;
+}
