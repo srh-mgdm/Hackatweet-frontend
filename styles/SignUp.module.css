@@ -1,0 +1,33 @@
+
+/* Modal */
+
+.mainSignUpModal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.divModalInput{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    padding:10px;
+}
+
+.mainSignInModal{
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: green; */
+    justify-content: center;
+}
+
+.divLogoImage{
+    width: 50px;
+
+}
+.divPMoinsGrosMots{
+    width:100%;
+}
+.pMoinsGrosMots{
+    font-size: 30px;
+    text-align: center;
+}

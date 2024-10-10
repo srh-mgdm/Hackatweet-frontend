@@ -2,13 +2,19 @@ import styles from '../styles/Login.module.css'
 import Image from 'next/image';
 import { Button, Modal } from 'antd';
 import { useEffect, useState } from 'react';
+import SignUp from './modal/SignUp';
+import SignIn from './modal/SignIn';
 
 
 function Login() {
 
+
     const [firstName, firstNameSetter] = useState('');
     const [username, usernameSetter] = useState('');
     const [password, passwordSetter] = useState('');
+
+    const [isLogin, isLoginSetter] = useState(false)
+    // const [clickSignUpBool, clickSignUpBoolSetter] = useState(false);
     const [clickSignUpBool, clickSignUpBoolSetter] = useState(false);
 
     // Pour le modal
@@ -22,13 +28,16 @@ function Login() {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
-
-    const clickSignUp = () => {
-        console.log(`-on a cliqué 📢`)
-        console.log(`firstName: ${firstName}`)
-        console.log(`username: ${username}`)
-        console.log(`password: ${password}`)
-        clickSignUpBoolSetter(true)
+    const clickForModal = (isLogin) =>{
+        isLoginSetter(isLogin)
+        showModal()
+    }
+    const changeClickSignUpBool = (firstName, username, password) =>{
+        console.log(`- dans Login.js 📣: changeClickSignUpBool`)
+        firstNameSetter(firstName)
+        usernameSetter(username)
+        passwordSetter(password)
+        clickSignUpBoolSetter(!clickSignUpBool)
     }
 
 
@@ -51,11 +60,14 @@ function Login() {
                     console.log(`data: ${data.result}`)
                     handleCancel()
                 });
-        }
+        } 
 
     }, [clickSignUpBool]);
 
-
+    const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+        footer={<></>} >
+        {isLogin ? <SignIn/> : <SignUp changeClickSignUpBool={changeClickSignUpBool}/> }
+    </Modal>
 
     return (
         <div className={styles.main} >
@@ -68,48 +80,30 @@ function Login() {
             <div className={styles.divCoteDroite}>
                 <div className={styles.divCoteDroiteSub}>
                     <div className={styles.divCoteDroiteSubImage}>
-                    <Image src="/images/logoHackatweet.png" alt="Logo"
-                        width={200} height={200} />
+                        <Image src="/images/logoHackatweet.png" alt="Logo"
+                            width={200} height={200} />
                     </div>
 
                     <div className={styles.divCodeDroiteSubGrosMots}>
                         <p className={styles.pGrosMots}>See what's</p>
-                        <p className={styles.pGrosMots}>happening</p> 
-                        <p className={styles.pMoinsGrosMots}>Join Hackatweet today.</p> 
+                        <p className={styles.pGrosMots}>happening</p>
+                        <p className={styles.pMoinsGrosMots}>Join Hackatweet today.</p>
                     </div>
-
-                    
 
                     <div className={styles.divDroiteButons}>
                         <div className={styles.divUnButon}>
-                            <button className={styles.btnSignUp} onClick={showModal}>Sign up </button>
+                            <button className={styles.btnSignUp} onClick={()=> clickForModal(false)}>Sign up </button>
                         </div>
                         <div>already have an account?</div>
                         <div className={styles.divUnButon}>
-                            <button className={styles.btnSignIn}>Sign in </button>
+                            <button className={styles.btnSignIn}onClick={()=> clickForModal(true)}>Sign in </button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {modal}
 
-            <Modal title="Sign Up" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
-                footer={<></>}>
-                <div className={styles.mainSignUpModal}>
-                    <div className={styles.divModalInput}>
-                        <input placeholder='firstName' onChange={(e) => firstNameSetter(e.target.value)} />
-                    </div>
-                    <div className={styles.divModalInput}>
-                        <input placeholder='username' onChange={(e) => usernameSetter(e.target.value)} />
-                    </div>
-                    <div className={styles.divModalInput}>
-
-                        <input placeholder='password' onChange={(e) => passwordSetter(e.target.value)} />
-                    </div>
-
-                    <button className={styles.btnLogin} onClick={() => clickSignUp()}>Sign up </button>
-                </div>
-            </Modal>
 
         </div>
     )
