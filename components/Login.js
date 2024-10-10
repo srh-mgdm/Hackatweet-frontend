@@ -33,7 +33,7 @@ function Login() {
 
 
     useEffect(() => {
-        if (clickSignUpBool){
+        if (clickSignUpBool) {
             const bodyData = {
                 firstName: firstName,
                 username: username,
@@ -45,14 +45,15 @@ function Login() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(bodyData)
             })
-              .then(response => response.json())
-              .then(data => {
-                console.log(`reponse bien reçu 🎉`)
-                console.log(`data: ${data.result}`)
-              });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(`reponse bien reçu 🎉`)
+                    console.log(`data: ${data.result}`)
+                    handleCancel()
+                });
         }
 
-      }, [clickSignUpBool]);
+    }, [clickSignUpBool]);
 
 
 
@@ -64,25 +65,36 @@ function Login() {
                     width={200} height={200} />
             </div>
 
-            <div className={styles.coteDroite}>
-
-                <div className={styles.divDroiteButons}>
-                    <div className={styles.divUnButon}>
-                        <button className={styles.btnLogin} onClick={showModal}>Sign up </button>
+            <div className={styles.divCoteDroite}>
+                <div className={styles.divCoteDroiteSub}>
+                    <div className={styles.divCoteDroiteSubImage}>
+                    <Image src="/images/logoHackatweet.png" alt="Logo"
+                        width={200} height={200} />
                     </div>
-                    <div>already have an account?</div>
-                    <div className={styles.divUnButon}>
-                        <button className={styles.btnLogin}>Sign in </button>
+
+                    <div className={styles.divCodeDroiteSubGrosMots}>
+                        <p className={styles.pGrosMots}>See what's</p>
+                        <p className={styles.pGrosMots}>happening</p> 
+                        <p className={styles.pMoinsGrosMots}>Join Hackatweet today.</p> 
+                    </div>
+
+                    
+
+                    <div className={styles.divDroiteButons}>
+                        <div className={styles.divUnButon}>
+                            <button className={styles.btnSignUp} onClick={showModal}>Sign up </button>
+                        </div>
+                        <div>already have an account?</div>
+                        <div className={styles.divUnButon}>
+                            <button className={styles.btnSignIn}>Sign in </button>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
 
             <Modal title="Sign Up" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
-                footer={<></>}
-            >
-
+                footer={<></>}>
                 <div className={styles.mainSignUpModal}>
                     <div className={styles.divModalInput}>
                         <input placeholder='firstName' onChange={(e) => firstNameSetter(e.target.value)} />
@@ -97,7 +109,6 @@ function Login() {
 
                     <button className={styles.btnLogin} onClick={() => clickSignUp()}>Sign up </button>
                 </div>
-
             </Modal>
 
         </div>
