@@ -68,15 +68,4 @@ height: 300px;
 }
 
 
-/* Modal */
-
-.mainSignUpModal{
-    display: flex;
-    flex-wrap: wrap;
-}
-.divModalInput{
-    width:100%;
-}
-
-
 
