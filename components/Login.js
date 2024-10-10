@@ -47,7 +47,7 @@ function Login() {
 
             <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <div className={styles.mainSignUpModal}>
-                <input onChange={(e) => setEmail(e.target.value)} value={email}/>
+                <input onChange={(e) => firstNameSetter(e.target.value)} value={firstName}/>
 
                 <button className={styles.btnLogin}>Sign ip </button>
                 </div>
