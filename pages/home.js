@@ -1,10 +1,11 @@
 import Home from '../components/Home';
 import Login from '../components/Login'
 
-function Index() {
+function home() {
   return <div>
-  <Login />
+  <Home/>
+
   </div>
 }
 
-export default Index;
+export default home;
