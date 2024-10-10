@@ -1,8 +1,8 @@
-import Tweet from '../components/Tweet';
+import Home from '../components/Home';
 
 
-function Home() {
+function home() {
   return <Home/>;
 }
 
-export default Home;
+export default home;

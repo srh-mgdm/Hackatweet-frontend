@@ -25,6 +25,7 @@ padding: 30px;
 }
 .divCoteDroiteSub{
     /* background-color: gray; */
+    padding-top: 50px;
 }
 .divCoteDroiteSubImage{
     width: 50px;
@@ -52,27 +53,18 @@ height: 300px;
     width:100%;
 }
 .btnSignUp{
-     background-color: blue;
-     border-radius: 10%;
+     background-color: #1DA1F2;
+     border-color: #1DA1F2;
      color:white;
-     border-color: blue;
+     border-radius: 40%;
+     width: 20vw;;
 }
 .btnSignIn{
-     background-color: transparent;
-     border-radius: 10%;
-     color:white;
-     border-color: blue;
-}
-
-
-/* Modal */
-
-.mainSignUpModal{
-    display: flex;
-    flex-wrap: wrap;
-}
-.divModalInput{
-    width:100%;
+    background-color: transparent;
+    border-color: #1DA1F2;
+    color:#1DA1F2;
+    border-radius: 40%;
+    width: 20vw;
 }
 
 

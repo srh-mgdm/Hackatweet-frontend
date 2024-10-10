@@ -10,8 +10,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-left: 33vw;
     border: 1px solid  black;
 }
 .btnContainer{
