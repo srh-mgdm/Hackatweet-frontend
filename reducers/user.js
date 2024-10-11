@@ -12,7 +12,7 @@ export const userSlice = createSlice({
             console.log(`- dans Redux: login 🔔`)
             state.value.token = action.payload.token;
             state.value.username = action.payload.username;
-            state.value.name = action.payload.firstName;
+            state.value.name = action.payload.name;
         },
         logout: (state) => {
             state.value.token = null;
