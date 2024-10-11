@@ -5,7 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function LastTweets({ refreshTweets }) {
+  const [countLike,setcountLike] = useState(0)
   const [tweets, setTweets] = useState([]);
+
+  const updateLikeTweet =(()=> {
+    console.log(countLike)
+    setcountLike( countLike +1) 
+    if(countLike>=1)
+    { setcountLike( countLike -1)}
+  }
+    )
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets')
@@ -59,6 +68,8 @@ function LastTweets({ refreshTweets }) {
       } else {
         userContent = <span>Unknown User</span>;
       }
+     
+
 
       return (
         <div key={index} className={styles.tweet}>
@@ -68,7 +79,7 @@ function LastTweets({ refreshTweets }) {
           </div>
           <p>{formatTweetText(tweet.tweetMessage)}</p>
           <div className={styles.tweetFooter}>
-            <button className={styles.likeButton}>❤️ {tweet.likesCounter}</button>
+            <button  onClick={()=>(updateLikeTweet(countLike + 1 ))}className={styles.likeButton}>❤️{countLike} </button>
           </div>
         </div>
       );

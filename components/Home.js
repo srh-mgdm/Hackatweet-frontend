@@ -21,8 +21,9 @@ const router =useRouter();
   // fonction callback logout
 
 const refreshHome =()=>{
+  
   console.log('click');
-  router.push('/');
+  router.push('/home');
 }
 
   return (
@@ -34,8 +35,8 @@ const refreshHome =()=>{
               <Image  className={styles.logo} src="/images/logoHackatweet.png" alt="logo twitter" width={40} height={40} onClick={()=>refreshHome()} />
               </div>
             {/* //bouton pour logout */}<div>
-              <p className={styles.info}>{user.username}</p>
-              <p className={styles.info}>{user.name}</p>
+              <p className={styles.info}>{user.username} {user.name}</p>
+              
             
 
             <button className={styles.bouton} onClick={()=>clickLogout()}>logout</button>

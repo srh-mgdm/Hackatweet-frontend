@@ -17,13 +17,15 @@
     height: 100vh
 }
 
-.divCoteDroite {
-    display: flex;
-    /* justify-content: center; */
-    /* background-color: aqua; */
-    width: 100%;
-    align-items: center;
-    padding: 30px;
+.divCoteDroite{
+display: flex;
+/* justify-content: center; */
+/* background-color: aqua; */
+width: 100%;
+align-items: center;
+padding: 30px;
+color: white;
+background-color: black;
 }
 
 .divCoteDroiteSub {
@@ -45,11 +47,12 @@
 }
 
 
-.divDroiteButons {
-    display: flex;
-    flex-wrap: wrap;
-    /* background-color: purple; */
-    height: 300px;
+.divDroiteButons{
+display: flex;
+flex-wrap: wrap;
+/* background-color: purple; */
+height: 300px;
+color: white;
 }
 
 .divUnButon {
