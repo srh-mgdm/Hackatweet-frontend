@@ -18,14 +18,19 @@ function Tweet() {
     const handleTweet = () => {
         if (!user.token) return; // if the user is not logged in , the tweet can not be sent
         const tweetMessage = tweetText;
+        // console.log('User token:', user.token);
+
 
         // extraction hashtages from tweettext in array format
         const hashtags = tweetText.match(/#[\w]+/g) || [];
+        // console.log('Sending tweet:', { token: user.token, tweetMessage, hashtags:hashtags.join(',') });
+
+
 
         fetch('http://localhost:3000/tweets/addTweet', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userId: user.token, tweetMessage, hashtags:hashtags.join(',') })
+            body: JSON.stringify({ token: user.token, tweetMessage, hashtags:hashtags.join(',') })
         })
         .then(response => response.json())
         .then(data => {
@@ -52,7 +57,7 @@ function Tweet() {
             <div className={styles.btnContainer}>
             <span className={styles.remaining}>{maxCharacters - tweetText.length}/{maxCharacters} </span>
             <button
-                onClick={handleTweet}
+                onClick={()=>handleTweet()}
                 disabled={!user.token || tweetText.length === 0}
                 style={{
                     backgroundColor: tweetText.length === 0 ? '#ccc' : '#1DA1F2', //backgroundColor of Tweet buttom
