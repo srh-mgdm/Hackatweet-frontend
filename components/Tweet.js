@@ -5,6 +5,7 @@ import styles from '../styles/Tweet.module.css';
 
 function Tweet() {
     const [tweetText, setTweetText] = useState('');
+    const [userId, setUserId] = useState('6707a650de6f4a5baf38e691');
     const maxCharacters = 280;
 
     const handleChange = (event) => {
@@ -12,8 +13,25 @@ function Tweet() {
     };
 
     const handleTweet = () => {
-        console.log('Tweet:', tweetText);
-        setTweetText('');
+
+        const tweetMessage = tweetText;
+
+        // extraction hashtages from tweettext in array format
+        const hashtags = tweetText.match(/#[\w]+/g) || [];
+
+        fetch('http://localhost:3000/tweets/addTweet', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, tweetMessage, hashtags:hashtags.join(',') })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Tweet added:', data);
+            setTweetText('');
+        })
+        .catch(error => {
+            console.error('Error adding tweet:', error);
+        });
     };
 
     return (
