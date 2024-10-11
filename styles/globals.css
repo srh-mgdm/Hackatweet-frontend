@@ -1,9 +1,15 @@
+@font-face {
+  font-family: 'Mont-Heavy';
+  /* src: url('./fonts/mont-heavy.ttf') format('truetype'); */
+  src: url('../public/fonts/mont-heavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Mont-Heavy';
-  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'Mont-Heavy', 'Verdana';
 }
 
 * {
