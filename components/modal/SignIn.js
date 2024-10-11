@@ -2,6 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import styles from '../../styles/SignUp.module.css';
 import Image from 'next/image';
+//import SignUp from './SignUp';
+//import home from '../../pages/homes';
+
 
 function SignIn(props) {
 
@@ -9,6 +12,9 @@ function SignIn(props) {
     const [password, passwordSetter] = useState('');
 
     const clickSignUp = () => {
+        console.log(`-on a cliqué 📢: clickSignIn`);//if(!username && password){ return SignUp}else{
+        //const switchPage =()=> {
+    // <Link href='../pages/home'> </Link>;}
         console.log(`-on a cliqué 📢: clickSignIn`)
         props.changeDeclencerFetchSignInBool(username,password)
     }
