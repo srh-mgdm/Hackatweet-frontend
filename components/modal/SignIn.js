@@ -35,7 +35,7 @@ function SignIn(props) {
                 <input placeholder='username' onChange={(e) => usernameSetter(e.target.value)} />
             </div>
             <div className={styles.divModalInput}>
-                <input placeholder='password' onChange={(e) => passwordSetter(e.target.value)} />
+                <input placeholder='password' type="password" onChange={(e) => passwordSetter(e.target.value)} />
             </div>
 
             <button className={styles.btnLogin} onClick={() => clickSignIn()}>Sign In </button>
