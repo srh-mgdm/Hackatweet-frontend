@@ -6,6 +6,8 @@ import Tweet from './Tweet'
 import Trends from './Trends';
 import {logout} from '../reducers/user'
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
   const dispatch = useDispatch();
@@ -34,8 +36,13 @@ const refreshHome =()=>{
               <div className={styles.divlogo}>
               <Image  className={styles.logo} src="/images/logoHackatweet.png" alt="logo twitter" width={40} height={40} onClick={()=>refreshHome()} />
               </div>
-            {/* //bouton pour logout */}<div>
-              <p className={styles.info}>{user.username} {user.name}</p>
+            {/* //bouton pour logout */}<div className={styles.logoutInfo}>
+
+            <FontAwesomeIcon icon={faUser} className={styles.userIcon}/>
+            <div>
+                <p className={styles.info}>@{user.username}</p>
+                <p className={styles.info}>{user.name}</p>
+                </div>
 
 
 

@@ -107,7 +107,7 @@ function Login() {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     const storeUserObject = {
-                        name: data.name ? data.name: "no name recieved form backend",
+                        name: data.name,
                         username: username,
                         token: data.token
                     }

@@ -39,8 +39,7 @@
   border: white solid 1px;
   height: 100vh;
   width: 50%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+ 
 }
 .trends{
   display:flex;
@@ -69,4 +68,8 @@
     margin-left: 20px;
     color: white;
     font-weight: 300;
+}
+
+.userIcon{
+    font-size: 36px;
 }
