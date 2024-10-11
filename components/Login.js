@@ -121,7 +121,7 @@ function Login() {
 
     }, [declencerFetchSignUpBool, declencerFetchSignInBool]);
 
-    const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+    const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} 
         footer={<></>} >
 
         {isLogin ? <SignIn changeDeclencerFetchSignInBool={changeDeclencerFetchSignInBool}/> : 

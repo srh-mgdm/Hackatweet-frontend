@@ -1,23 +1,34 @@
 
 /* Modal */
 
-.mainSignUpModal{
+.mainSignUpModal {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: black;
 }
+.mainSignInModal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: black;
+    margin:0;
+    padding:0;
+}
+
 .divModalInput{
     width:100%;
     display: flex;
     justify-content: center;
     padding:10px;
-}
 
-.mainSignInModal{
-    display: flex;
-    flex-wrap: wrap;
-    /* background-color: green; */
-    justify-content: center;
+}
+.divModalInput > input{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 250px;
 }
 
 .divLogoImage{
@@ -26,8 +37,21 @@
 }
 .divPMoinsGrosMots{
     width:100%;
+    color: white;
 }
 .pMoinsGrosMots{
     font-size: 30px;
     text-align: center;
 }
+.btnLogin{
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    width: 250px;
+}
+
+  
