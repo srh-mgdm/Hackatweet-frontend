@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont-Heavy';
+  /* font-family: 'Mont-Heavy'; */
   /* src: url('./fonts/mont-heavy.ttf') format('truetype'); */
   src: url('../public/fonts/mont-heavy.ttf') format('truetype');
   font-weight: normal;
