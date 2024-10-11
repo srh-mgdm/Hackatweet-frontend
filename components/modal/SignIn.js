@@ -11,7 +11,7 @@ function SignIn(props) {
     const [username, usernameSetter] = useState('');
     const [password, passwordSetter] = useState('');
 
-    const clickSignUp = () => {
+    const clickSignIn = () => {
         console.log(`-on a cliqué 📢: clickSignIn`);//if(!username && password){ return SignUp}else{
         //const switchPage =()=> {
     // <Link href='../pages/home'> </Link>;}
@@ -27,6 +27,10 @@ function SignIn(props) {
                     width={200} height={200} />
             </div>
 
+            <div className={styles.divPMoinsGrosMots}>
+
+                <p className={styles.pMoinsGrosMots}>Connect to Hackatweet</p>
+            </div>
             <div className={styles.divModalInput}>
                 <input placeholder='username' onChange={(e) => usernameSetter(e.target.value)} />
             </div>
@@ -34,7 +38,7 @@ function SignIn(props) {
                 <input placeholder='password' onChange={(e) => passwordSetter(e.target.value)} />
             </div>
 
-            <button className={styles.btnLogin} onClick={() => clickSignUp()}>Sign In </button>
+            <button className={styles.btnLogin} onClick={() => clickSignIn()}>Sign In </button>
         </div>
     );
 }
