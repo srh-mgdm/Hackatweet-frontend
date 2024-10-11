@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import styles from '../styles/LastTweets.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function LastTweets({ refreshTweets }) {
   const [tweets, setTweets] = useState([]);
@@ -18,10 +20,8 @@ function LastTweets({ refreshTweets }) {
       .catch(error => {
         console.error('Error:', error);
       });
-
   }, [refreshTweets]);
 
-  // For styling hashtags
   function formatTweetText(tweetText) {
     if (!tweetText) {
       return <span>No text available</span>;
@@ -41,19 +41,18 @@ function LastTweets({ refreshTweets }) {
   }
 
   let tweetList;
-  // Consider if the tweet exists or not
   if (tweets.length === 0) {
     tweetList = <p>No tweets yet</p>;
   } else {
     tweetList = tweets.map((tweet, index) => {
       let userContent;
 
-      // Check for user existence and display user information
       if (tweet.users && tweet.users.length > 0) {
         const user = tweet.users[0];
         userContent = (
           <>
-            <strong>{user.name}</strong>
+          <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+            <strong className={styles.name}>{user.name}</strong>
             <span className={styles.username}>@{user.username}</span>
           </>
         );
@@ -64,15 +63,10 @@ function LastTweets({ refreshTweets }) {
       return (
         <div key={index} className={styles.tweet}>
           <div className={styles.tweetHeader}>
-            {/* Display user information */}
             {userContent}
-            {/* Show when the tweet was created */}
             <span className={styles.time}>{moment(tweet.createdAt).fromNow()}</span>
           </div>
-
-          {/* Show tweet message and hashtags */}
           <p>{formatTweetText(tweet.tweetMessage)}</p>
-
           <div className={styles.tweetFooter}>
             <button className={styles.likeButton}>❤️ {tweet.likesCounter}</button>
           </div>
@@ -85,4 +79,3 @@ function LastTweets({ refreshTweets }) {
 }
 
 export default LastTweets;
-
