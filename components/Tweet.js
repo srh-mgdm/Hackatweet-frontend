@@ -5,7 +5,7 @@ import styles from '../styles/Tweet.module.css';
 import { useSelector } from 'react-redux';
 
 function Tweet() {
-    
+
     const [tweetText, setTweetText] = useState('');
     // const [userId, setUserId] = useState('6707a650de6f4a5baf38e691'); //for testing before using the Redux
     const [refreshTweets, setRefreshTweets] = useState(false);
@@ -51,8 +51,7 @@ function Tweet() {
                 value={tweetText}
                 onChange={handleChange}
                 maxLength={maxCharacters}
-                placeholder="What's happening?"
-                className={styles.textarea}
+                placeholder="What's up?"
                 disabled={!user.token} // the textarea is disabled when the user is not logged in
             />
             <div className={styles.btnContainer}>
@@ -67,7 +66,7 @@ function Tweet() {
                     borderRadius: '5px',
                     padding: '10px 15px',
                     cursor: tweetText.length === 0 ? 'not-allowed' : 'pointer',
-                    marginLeft: '10px',
+                    marginLeft: '5px',
                 }}
             >
                 Tweet

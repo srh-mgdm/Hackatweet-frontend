@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  
+
 }
 
 .title {
@@ -29,7 +29,7 @@
   height: 100vh;
   width: 20%;
   justify-content: space-between;
-  
+
 
 }
 .content{
@@ -40,6 +40,7 @@
   height: 100vh;
   width: 50%;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .trends{
   display:flex;
@@ -62,6 +63,10 @@
 .logo{
   cursor:pointer;
 }
+
 .info{
-  color:white;
+
+    margin-left: 20px;
+    color: white;
+    font-weight: 300;
 }

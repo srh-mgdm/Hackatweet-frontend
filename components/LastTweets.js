@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import styles from '../styles/LastTweets.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 
 function LastTweets({ refreshTweets }) {
   const [countLike,setcountLike] = useState(0)
@@ -10,7 +11,7 @@ function LastTweets({ refreshTweets }) {
 
   const updateLikeTweet =(()=> {
     console.log(countLike)
-    setcountLike( countLike +1) 
+    setcountLike( countLike +1)
     if(countLike>=1)
     { setcountLike( countLike -1)}
   }
@@ -48,7 +49,34 @@ function LastTweets({ refreshTweets }) {
       }
     });
   }
+  const toggleLike = (tweetId, isLiked) => {
+    setTweets(prevTweets =>
+      prevTweets.map(tweet => {
+        if (tweet._id === tweetId) {
+          let updatedTweet = {
+            _id: tweet._id,
+            tweetMessage: tweet.tweetMessage,
+            createdAt: tweet.createdAt,
+            users: tweet.users,
+            likesCounter: tweet.likesCounter,
+            isLiked: tweet.isLiked,
+          };
 
+         
+          if (isLiked) {
+            updatedTweet.isLiked = false;
+            updatedTweet.likesCounter = tweet.likesCounter - 1;
+          } else {
+            updatedTweet.isLiked = true;
+            updatedTweet.likesCounter = tweet.likesCounter + 1;
+          }
+
+          return updatedTweet;
+        }
+        return tweet;
+      })
+    );
+  };
   let tweetList;
   if (tweets.length === 0) {
     tweetList = <p>No tweets yet</p>;
@@ -68,7 +96,7 @@ function LastTweets({ refreshTweets }) {
       } else {
         userContent = <span>Unknown User</span>;
       }
-     
+
 
 
       return (
@@ -79,7 +107,16 @@ function LastTweets({ refreshTweets }) {
           </div>
           <p>{formatTweetText(tweet.tweetMessage)}</p>
           <div className={styles.tweetFooter}>
-            <button  onClick={()=>(updateLikeTweet(countLike + 1 ))}className={styles.likeButton}>❤️{countLike} </button>
+            <button
+              className={styles.likeButton}
+              onClick={() => toggleLike(tweet._id, tweet.isLiked)}
+            >
+              <FontAwesomeIcon
+                icon={tweet.isLiked ? solidHeart : regularHeart}
+                style={{ color: tweet.isLiked ? 'red' : 'white' }}
+              />{' '}
+              {tweet.likesCounter}
+            </button>
           </div>
         </div>
       );

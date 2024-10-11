@@ -14,6 +14,7 @@
     margin-bottom: 10px;
     color: white;
     border-bottom: 2px solid gray;
+    font-size: small;
 
 }
 
@@ -48,5 +49,5 @@
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 16px; 
+    font-size: 16px;
 }

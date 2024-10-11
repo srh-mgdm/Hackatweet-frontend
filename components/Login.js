@@ -22,7 +22,7 @@ function Login() {
     // const [clickSignUpBool, clickSignUpBoolSetter] = useState(false);
     const [declencerFetchSignUpBool, declencerFetchSignUpBoolSetter] = useState(false);
     const [declencerFetchSignInBool, declencerFetchSignInBoolSetter] = useState(false);
-    
+
     // redirect url
     const router = useRouter();
 
@@ -121,10 +121,10 @@ function Login() {
 
     }, [declencerFetchSignUpBool, declencerFetchSignInBool]);
 
-    const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} 
+    const modal = <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
         footer={<></>} >
 
-        {isLogin ? <SignIn changeDeclencerFetchSignInBool={changeDeclencerFetchSignInBool}/> : 
+        {isLogin ? <SignIn changeDeclencerFetchSignInBool={changeDeclencerFetchSignInBool}/> :
         <SignUp changeDeclencerFetchSignUpBool={changeDeclencerFetchSignUpBool}/> }
     </Modal>
 
