@@ -6,6 +6,11 @@ import SignUp from './modal/SignUp';
 import SignIn from './modal/SignIn';
 import { useRouter } from 'next/router';
 
+
+// redux
+import { useDispatch } from 'react-redux';
+import { login} from '../reducers/user'
+
 function Login() {
 
 
@@ -20,6 +25,9 @@ function Login() {
     
     // redirect url
     const router = useRouter();
+
+    // redux
+    const dispatch = useDispatch();//<-- utilse directement comme ça>
 
 
     // Pour le modal
@@ -90,6 +98,13 @@ function Login() {
                 .then(data => {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
+                    const storeUserObject = {
+                        firstName: "NickForRedux",
+                        username: username,
+                        token: "superToken"
+                    }
+                    dispatch(login(storeUserObject))
+
                     handleCancel()
 
                     router.push('/home');
