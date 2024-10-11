@@ -82,7 +82,7 @@ function Login() {
                     const storeUserObject = {
                         username: username,
                         token: data.token,
-                        firstName: firstName
+                        name: firstName
                     }
                     dispatch(login(storeUserObject))
 
@@ -107,7 +107,7 @@ function Login() {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     const storeUserObject = {
-                        firstName: data.name ? data.name: "no name recieved form backend",
+                        name: data.name ? data.name: "no name recieved form backend",
                         username: username,
                         token: data.name
                     }
