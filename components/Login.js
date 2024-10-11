@@ -64,7 +64,7 @@ function Login() {
         if (declencerFetchSignUpBool) {
             console.log("***** SignUp ******")
             const bodyData = {
-                firstName: firstName,
+                name: firstName,
                 username: username,
                 password: password,
             }
@@ -78,7 +78,7 @@ function Login() {
                 .then(data => {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
-                    console.log(`data: ${data.result}`)
+                    console.log(`data: ${data.token}`)
                     const storeUserObject = {
                         username: username,
                         token: data.token,
