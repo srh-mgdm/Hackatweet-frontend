@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import styles from '../../styles/SignUp.module.css';
 import Image from 'next/image';
+//import home from '../../pages/homes';
 
 function SignUp(props) {
 
