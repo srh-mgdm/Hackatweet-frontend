@@ -3,7 +3,16 @@ import moment from 'moment';
 import styles from '../styles/LastTweets.module.css';
 
 function LastTweets({ refreshTweets }) {
+  const [countLike,setcountLike] = useState(0)
   const [tweets, setTweets] = useState([]);
+
+  const updateLikeTweet =(()=> { 
+    countLike + 1
+    if(countLike < 1){
+      countLike = 0
+    }
+    }
+    )
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets')
@@ -60,6 +69,8 @@ function LastTweets({ refreshTweets }) {
       } else {
         userContent = <span>Unknown User</span>;
       }
+     
+
 
       return (
         <div key={index} className={styles.tweet}>
@@ -74,7 +85,7 @@ function LastTweets({ refreshTweets }) {
           <p>{formatTweetText(tweet.tweetMessage)}</p>
 
           <div className={styles.tweetFooter}>
-            <button className={styles.likeButton}>❤️ {tweet.likesCounter}</button>
+            <button  onClick={()=>(updateLikeTweet(setcountLike()))}className={styles.likeButton}>❤️{countLike} </button>
           </div>
         </div>
       );

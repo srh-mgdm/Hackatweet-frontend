@@ -5,6 +5,7 @@ import styles from '../styles/Tweet.module.css';
 import { useSelector } from 'react-redux';
 
 function Tweet() {
+    
     const [tweetText, setTweetText] = useState('');
     // const [userId, setUserId] = useState('6707a650de6f4a5baf38e691'); //for testing before using the Redux
     const [refreshTweets, setRefreshTweets] = useState(false);
