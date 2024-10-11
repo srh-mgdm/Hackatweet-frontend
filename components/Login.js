@@ -78,13 +78,21 @@ function Login() {
                 .then(data => {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
+                    console.log(`data: ${data.result}`)
+                    const storeUserObject = {
+                        username: username,
+                        token: data.token,
+                        name: firstName
+                    }
+                    dispatch(login(storeUserObject))
+
                     handleCancel()
 
                     router.push('/home');
                 });
         } else if (declencerFetchSignInBool){
             console.log(`---> declencerFetchSignInBool 🎯`)
-            console.log("------- SignIN -------")
+            console.log("------- SignIn -------")
             const bodyData = {
                 username: username,
                 password: password,
@@ -99,9 +107,9 @@ function Login() {
                     console.log(`reponse bien reçu 🎉`)
                     console.log(`data: ${data.result}`)
                     const storeUserObject = {
-                        firstName: "NickForRedux",
+                        name: data.name ? data.name: "no name recieved form backend",
                         username: username,
-                        token: "superToken"
+                        token: data.name
                     }
                     dispatch(login(storeUserObject))
 
