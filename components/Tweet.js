@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
-
+import LastTweets from './LastTweets';
 import styles from '../styles/Tweet.module.css';
 
 function Tweet() {
     const [tweetText, setTweetText] = useState('');
     const [userId, setUserId] = useState('6707a650de6f4a5baf38e691');
+    const [refreshTweets, setRefreshTweets] = useState(false);
     const maxCharacters = 280;
 
     const handleChange = (event) => {
@@ -28,6 +29,7 @@ function Tweet() {
         .then(data => {
             console.log('Tweet added:', data);
             setTweetText('');
+            setRefreshTweets(prev => !prev)
         })
         .catch(error => {
             console.error('Error adding tweet:', error);
@@ -61,7 +63,9 @@ function Tweet() {
             >
                 Tweet
             </button>
+
             </div>
+            <LastTweets refreshTweets={refreshTweets} />
 
         </div>
     );
