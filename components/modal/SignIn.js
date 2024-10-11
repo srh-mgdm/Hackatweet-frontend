@@ -4,7 +4,9 @@ import styles from '../../styles/SignUp.module.css';
 import Image from 'next/image';
 //import SignUp from './SignUp';
 //import home from '../../pages/homes';
-function SignIn() {
+
+
+function SignIn(props) {
 
     const [username, usernameSetter] = useState('');
     const [password, passwordSetter] = useState('');
@@ -13,6 +15,8 @@ function SignIn() {
         console.log(`-on a cliqué 📢: clickSignIn`);//if(!username && password){ return SignUp}else{
         //const switchPage =()=> {
     // <Link href='../pages/home'> </Link>;}
+        console.log(`-on a cliqué 📢: clickSignIn`)
+        props.changeDeclencerFetchSignInBool(username,password)
     }
 
     return (
