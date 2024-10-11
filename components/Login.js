@@ -109,7 +109,7 @@ function Login() {
                     const storeUserObject = {
                         name: data.name ? data.name: "no name recieved form backend",
                         username: username,
-                        token: data.name
+                        token: data.token
                     }
                     dispatch(login(storeUserObject))
 
