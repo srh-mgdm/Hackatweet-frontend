@@ -21,8 +21,9 @@ const router =useRouter();
   // fonction callback logout
 
 const refreshHome =()=>{
+  
   console.log('click');
-  router.push('/');
+  router.push('/home');
 }
 
   return (
@@ -35,7 +36,7 @@ const refreshHome =()=>{
               </div>
             {/* //bouton pour logout */}<div>
               <p className={styles.info}>{user.username}</p>
-              <p className={styles.info}>{user.name}</p>
+              
             
 
             <button className={styles.bouton} onClick={()=>clickLogout()}>logout</button>

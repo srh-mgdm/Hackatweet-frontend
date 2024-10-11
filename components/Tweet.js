@@ -41,7 +41,7 @@ function Tweet() {
     return (
 
         <div className={styles.container}>
-            <textarea
+            <textarea 
                 value={tweetText}
                 onChange={handleChange}
                 maxLength={maxCharacters}
