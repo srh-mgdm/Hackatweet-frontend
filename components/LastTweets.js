@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment'; // کتابخانه برای مدیریت زمان
-import styles from '../styles/LastTweets.module.css'; // استایل‌های CSS
+import moment from 'moment';
+import styles from '../styles/LastTweets.module.css';
 
 function LastTweets({ refreshTweets }) {
   const [tweets, setTweets] = useState([]);
 
-  // دریافت توییت‌ها از API
+
   useEffect(() => {
     fetch('http://localhost:3000/tweets')
       .then(response => response.json())
       .then(data => {
         if (data.result) {
-          setTweets(data.tweets); // توییت‌ها را تنظیم کنید
+          setTweets(data.tweets);
         } else {
           console.error('Error fetching tweets');
         }
@@ -21,16 +21,16 @@ function LastTweets({ refreshTweets }) {
       });
   }, [refreshTweets]);
 
-  // تابع برای استایل‌دهی به هشتگ‌ها
+  // for styles hashtags
   function formatTweetText(tweetText) {
-    // بررسی اینکه آیا tweetText وجود دارد
+
     if (!tweetText) {
-      return <span>No text available</span>; // در صورت عدم وجود متن
+      return <span>No text available</span>;
     }
 
     return tweetText.split(' ').map((word, index) => {
       if (word.startsWith('#')) {
-        // اگر کلمه هشتگ باشد، رنگ آبی اضافه کن
+
         return (
           <span key={index} style={{ color: '#1DA1F2' }}>
             {word + ' '}
@@ -42,48 +42,48 @@ function LastTweets({ refreshTweets }) {
     });
   }
 
-  // متغیر برای نگهداری لیست توییت‌ها
+
   let tweetList;
 
-  // اگر توییتی وجود نداشته باشد
+  // if there is no tweet
   if (tweets.length === 0) {
     tweetList = <p>No tweets yet</p>;
   } else {
-    // اگر توییت وجود داشته باشد
+    // if there is tweet
     tweetList = tweets.map((tweet, index) => (
       <div key={index} className={styles.tweet}>
         <div className={styles.tweetHeader}>
-          {/* بررسی وجود کاربران قبل از دسترسی به اطلاعات */}
+
           {(() => {
             if (tweet.users && tweet.users.length > 0) {
               const user = tweet.users[0];
               return (
                 <>
-                  {/* نمایش نام کاربر */}
+                 // show the username
                   <strong>{user.name}</strong>
-                  {/* نمایش نام کاربری */}
+
                   <span className={styles.username}>@{user.username}</span>
                 </>
               );
             } else {
-              // پیام در صورت عدم وجود کاربر
+
               return <span>Unknown User</span>;
             }
           })()}
-          {/* زمان ارسال توییت */}
+
           <span className={styles.time}>{moment(tweet.createdAt).fromNow()}</span>
         </div>
-        {/* متن توییت با هشتگ آبی */}
+        //tweets with blue hashtages
         <p>{formatTweetText(tweet.tweetMessage)}</p>
         <div className={styles.tweetFooter}>
-          {/* دکمه لایک */}
+
           <button className={styles.likeButton}>❤️ {tweet.likesCounter}</button>
         </div>
       </div>
     ));
   }
 
-  // نمایش لیست توییت‌ها
+ 
   return <div className={styles.tweetsContainer}>{tweetList}</div>;
 }
 
